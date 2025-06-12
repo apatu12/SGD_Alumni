@@ -1,0 +1,186 @@
+
+{% extends 'Main/Admin/layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container mt-5">
+    <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'ALm' %}"></i>Lista Alumni</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{legend|upper}}</li>
+  </ol>
+</nav>
+    <div class="row">
+        <!-- Table Content -->
+        <div class="col-12 col-md-6 col-lg-12">
+            <div class="card rounded">
+                <div class="card-header bg-primary">
+                    <h6 class="font-weight-bold text-white"><i class="fa fa-list"></i> {{legend|upper}}</h6>
+                </div>
+                <div class="card-body">
+                    {% if messages %}
+                        {% for message in messages  %}
+                            <div class="alert alert-{{message.tags}}">{{message}}</div>
+                        {% endfor %}
+                    {% endif %}
+
+                <div class="row">
+                <div class="col-md-4 mb-4">
+                  <div class="card">
+                    <div class="card-header">
+                      <h6>
+                        <i class="fa fa-camera"></i> Image
+                      </h6>
+                    </div>
+                    <div class="card-body text-center">
+                      {% if objec.foto %}
+                        <img src="{{ objec.foto.url }}" alt="Foto Alumni" class="img-circle" width="100%" height="200px">
+                      {% else %}
+                        <img src="{% static 'image/UNTL.png' %}" alt="Foto Alumni" class="rounded" width="100%">
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-8 mb-4">
+                  <div class="card">
+                    <div class="card-header">
+                      <h6><i class="fa fa-user"></i> Dadus Pessoal</h6>
+                    </div>
+                    <div class="card-body">
+                      <table class="table table-borderles table-sm" width="100%">
+                    <tr>
+                      <th>Nu Rejistu Estudante</th>
+                      <td>: {{ objec.nre }}</td>
+                    </tr>
+                     <tr>
+                      <th>Naran</th>
+                      <td>: {{ objec.name }}</td>
+                    </tr>
+                    <tr>
+                      <th>Sexu</th>
+                      <td>: {{ objec.sex }}</td>
+                    </tr>
+                    <tr>
+                      <th>Data Moris</th>
+                      <td>: {{ objec.dob }}</td>
+                    </tr>
+                    <tr>
+                      <th>Fatin Moris</th>
+                      <td>: {{ objec.pob }}</td>
+                    </tr>
+                  </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-8 mb-4">
+                  <div class="card">
+                    <div class="card-header">
+                      <h6><i class="fa fa-eye"></i> Informasaun Escola</h6>
+                    </div>
+                    <div class="card-body">
+                      <table class="table table-borderles table-sm" width="100%">
+                    <tr>
+                      <th>Faculdade</th>
+                      <td>: {{ objec.faculdade}}</td>
+                    </tr>
+                    <tr>
+                      <th>Departamento</th>
+                      <td>: {{ objec.departamento }}</td>
+                    </tr>
+                     <tr>
+                      <th>Tinan Hahu</th>
+                      <td>: {{ objec.start_date }}</td>
+                    </tr>
+                    <tr>
+                      <th>Tinan Remata</th>
+                      <td>: {{ objec.start_date }}</td>
+                    </tr>
+                    <tr>
+                      <th>Data Rejistu</th>
+                      <td>: {{ objec.create_at }}</td>
+                    </tr>
+                    <tr>
+                      <th>Rejistu Husi</th>
+                      <td>: {{ objec.create_by }}</td>
+                    </tr>
+                    <tr>
+                      <th>Orientador I</th>
+                      <td>: {{ objec.orientador}}</td>
+                    </tr>
+                    <tr>
+                      <th>Orientador II</th>
+                      <td>: {{ objec.orientador }}</td>
+                    </tr>
+                    <tr>
+                      <th>Titulo Teze</th>
+                      <td>: {{ objec.title }}</td>
+                    </tr>
+                    <tr>
+                      <th>Valor Teze</th>
+                      <td>: {{ objec.point }}</td>
+                    </tr>
+                    <tr>
+                      <th>Predikadu Final</th>
+                      <td>: {{ objec.predict }}</td>
+                    </tr>
+              </table>
+                    </div>
+                  </div>
+                </div>
+            <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-header">
+                      <h6><i class="fa fa-list"></i> Enderesu</h6>
+                    </div>
+                    <div class="card-body">
+                      <table class="table table-borderles table-sm" width="100%">
+                    <tr>
+                      <th>Munisipiu</th>
+                      <td>: {{ objec.mun }}</td>
+                    </tr>
+                    <tr>
+                      <th>Postu</th>
+                      <td>: {{ objec.post }}</td>
+                    </tr>
+                    <tr>
+                      <th>Suku</th>
+                      <td>: {{ objec.suk }}</td>
+                    </tr>
+                    <tr>
+                      <th>Aldeia</th>
+                      <td>: {{ objec.ald }}</td>
+                    </tr>
+                   
+                    <tr>
+                      <th>Naran Aman</th>
+                      <td>: {{ objec.fname }}</td>
+                    </tr>
+                    <tr>
+                      <th>Naran Inan</th>
+                      <td>: {{ objec.mname }}</td>
+                    </tr>
+                    <tr>
+                      <th>Nu Kontaktu</th>
+                      <td>: {{ objec.Tpone }}</td>
+                    </tr>
+                    <tr>
+                      <th>Email</th>
+                      <td>:{{ objec.email }}</td>
+                    </tr>
+                    <tr>
+                      <th>Enderesu Inan Aman</th>
+                      <td>: {{ objec.paddres }}</td>
+                    </tr>
+                  </table>
+                    </div>
+                  </div>
+                </div>
+                      <a href="{% url 'ALm' %}"class="btn btn-danger"><i class="fa fa-arrow-left"></i>Fila</a>      
+                </div>
+            </div>
+        </div> <!-- end content col -->
+    </div> <!-- end row -->
+</div> <!-- end container -->
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends 'Main/Admin/layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container">
+    <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{legend|upper}}</li>
+  </ol>
+</nav>
+    <div class="row">
+        <!-- Table Content -->
+        <div class="col-12 col-md-6 col-lg-12">
+            <div class="card rounded">
+                <div class="card-header" style="background: #41d5f0;">
+                    <h6 class="font-weight-bold text-white"><i class="fa fa-list"></i> {{title}}</h6>
+                </div>
+                <div class="card-body">
+                    {% if messages %}
+                        {% for message in messages  %}
+                            <div class="alert alert-{{message.tags}}">{{message}}</div>
+                        {% endfor %}
+                    {% endif %}
+                     {% if group == 'Staff' or group == 'Admin' %}
+                         <div class="d-flex justify-content-between">
+                    <a href="{% url 'add' %}" class="btn btn-outline-primary"><i class="fa fa-user-plus"></i> Adisiona Docentes</a>
+                    <br>
+
+                     {% endif %}
+                     {% if page == 'obj_doc' %}
+                         {% for obj in fac %}
+                            <a href="{% url 'obj-doc' obj.pk %}" class="btn btn-primary btn-sm m-1"><i class="fa fa-list"></i> {{ obj.code }}</a>
+                        {% endfor %}
+                        <br>
+                    {% else %}
+                     {% endif %}
+                    </div>
+                    {% if page == 'obj_doc' or page == 'obj_page' %}
+                        <div class="table-responsive">
+                        <table id="example1" class="table table-bordered table-sm">
+                            <thead class="text-center">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Naran</th>
+                                    <th>Sexu</th>
+                                    <th>Enderesu</th>
+                                    <th>Nivel Edukasaun</th>
+                                    <th>Departamento</th>
+                                    <th>Munisipiu</th>
+                                    <th>Opsaun</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for docente in objD  %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ docente.name }}</td>
+                                    <td>{{ docente.sex }}</td>
+                                    <td>{{ docente.addres }}</td>
+                                    <td>{{ docente.level }}</td>
+                                    <td>{{ docente.departamento }}</td>
+                                    <td>{{ docente.munisipiu }}</td>
+                                    <td class="text-center">
+                                        <a href="{% url 'Edt' docente.id %}"class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete-{{docente.id}}"><i class="fa fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <div class="modal fade" id="delete-{{docente.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header bg-primary">
+                                        <h5 class="modal-title bg-primary " id="exampleModalLabel" class="btn btn-primary mb-primari">Ita Hakarak Hamos Dadus Ne'e</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        Ita hakarak hamos dadus ho naran {{docente.name}}
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-window-close"></i> Close</button>
+                                        <a href="{% url 'delete' docente.id %}" class="btn btn-success"><i class="fa fa-trash"></i> Hamos</a>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div> <!-- end content col -->
+    </div> <!-- end row -->
+</div> <!-- end container -->
+{% endblock %}

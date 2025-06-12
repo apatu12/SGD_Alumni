@@ -1,0 +1,62 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# SQLite3 database file
+*.sqlite3
+
+# PostgreSQL database (jika ada backup)
+*.dump
+*.sql
+
+# Django media uploads
+/media/
+*.webm
+*.mp4
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+
+# Django static files (collectstatic)
+staticfiles/
+static/
+
+# Environment variables
+.env
+*.env
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Pip environment
+env/
+venv/
+ENV/
+.venv/
+
+# Pytest cache
+.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+
+# Logs
+*.log
+
+# Highcharts offline (jika tidak ingin dipush)
+highcharts_offline/
+
+# Backup or temp files
+*.bak
+*.tmp
+*.temp

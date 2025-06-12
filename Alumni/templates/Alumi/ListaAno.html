@@ -1,0 +1,91 @@
+{% extends 'Main/Admin/layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container mt-5">
+    <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{legend|upper}}</li>
+  </ol>
+</nav>
+    <div class="row">
+        <!-- Table Content -->
+        <div class="col-12 col-md-6 col-lg-12">
+            <div class="card rounded">
+                <div class="card-header bg-primary">
+                    <h6 class="font-weight-bold text-white"><i class="fa fa-list"></i> {{title}}</h6>
+                </div>
+                <div class="card-body">
+                    {% if messages %}
+                        {% for message in messages  %}
+                            <div class="alert alert-{{message.tags}}">{{message}}</div>
+                        {% endfor %}
+                    {% endif %}
+                    {% if group == 'Admin' %}
+                        
+                    <a href="{% url 'a-alm' %}" class="btn btn-outline-primary btn-sm mb-4"><i class="fa fa-user-plus"></i> Adisiona Alumni</a>
+                    <a href="{% url 'i-file' %}" class="btn btn-outline-success btn-sm mb-4"><i class="fa fa-download"></i> Importa Ficheiro</a>
+                    <a href="{% url 'e-csv' %}" class="btn btn-outline-danger btn-sm mb-4"><i class="fa fa-upload"></i> Exporta Ficheiro</a>
+                    <br>
+                    <br>
+                    {% endif %}
+                    <div class="table-responsive">
+                        <table id="example1" class="table table-bordered table-sm">
+                            <thead class="text-center">
+                                <tr>
+                                    <th>Nu Rejistu</th>
+                                    <th>Naran</th>
+                                    <th>Sexu</th>
+                                    <th>Data Moris</th>
+                                    <th>Departamento</th>
+                                    <th>Munisipiu</th>
+                                    <th>Tinan</th>
+                                    <th>Opsaun</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for alumni in ano %}
+                                <tr>
+                                    <td>{{ alumni.nre }}</td>
+                                    <td>{{ alumni.name }}</td>
+                                    <td>{{ alumni.sex }}</td>
+                                    <td>{{ alumni.dob|date:"d/m/Y" }}</td>
+                                    <td>{{ alumni.departamento.code }}</td>
+                                    <td>{{ alumni.mun }}</td>
+                                    <td>{{alumni.start_date.name}}</td>
+                                    <td class="text-center">
+                                        {% if group == 'Admin' %}
+                                            <a href="" class=" text-info"><i class="fa fa-edit"></i></a>
+                                        <a href="{% url 'sof-delete' alumni.id %}" class="text-danger"><i class="fa fa-trash"></i></a>
+                                        {% else %}
+                                        <a href="{% url 'Det_ALm'  alumni.id %}" class="text-success"><i class="fa fa-eye"></i></a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <nav aria-label="breadcrumb">
+                      <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'ALm' %}">Jeral</a></li>
+                        {% if page == 'mun_almt' or page == 'mun_almf' or page == 'mun_amlm' %}
+                            {% for obj in ano %}
+                            <li class="breadcrumb-item"><a href="{% url 'all-tinan-mun' obj.pk %}">{{obj.name}}</a></li>
+                        {% endfor %}
+                        {% else %}
+                        {% for obj in years %}
+                            <li class="breadcrumb-item"><a href="{% url 'Lista-Ano-mun' obj.pk %}">{{obj.name}}</a></li>
+                        {% endfor %}
+                        {% endif %}
+                      </ol>
+                    </nav>
+                </div>
+            </div>
+        </div> <!-- end content col -->
+    </div> <!-- end row -->
+</div> <!-- end container -->
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'Main/Admin/layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container mt-5">
+    <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'ALm' %}">Lista Alumni</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{legend|upper}}</li>
+  </ol>
+</nav>
+    <div class="row">
+        <!-- Table Content -->
+        <div class="col-12 col-md-6 col-lg-12">
+            <div class="card rounded">
+                <div class="card-header"  style="background: #41d5f0;">
+                    <h6 class="font-weight-bold text-white"><i class="fa fa-list"></i> {{legend|upper}}</h6>
+                </div>
+                <div class="card-body">
+                        <form method="post" id="AlmuniForm" enctype="multipart/form-data" data-postu-url="{% url 'ajax-load-postu' %}" data-suku-url="ajax-load-suku" data-aldeia-url="ajax-load-aldeia" novalidate>
+
+                            {% csrf_token %}
+                            {% crispy form %}
+                        </form>
+                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                        <script type="text/javascript">
+                            $("#id_municipality").change(function() {
+                                var url = $("#AlmuniForm").attr("data-postu-url");
+                                var municipalityId = $(this).val();
+
+                                $.ajax({
+                                    url: url,
+                                    data: {
+                                        'municipalityId': municipalityId
+                                    },
+                                    success: function(data) {
+                                        $("#id_administrativepost").html(data);
+                                    }
+                                });
+                            });
+
+                            $("#id_administrativepost").change(function() {
+                                var url = $("#AlmuniForm").attr("data-suku-url");
+                                var administrativePostId = $(this).val();
+
+                                $.ajax({
+                                    url: url,
+                                    data: {
+                                        'administrativePostId': administrativePostId
+                                    },
+                                    success: function(data) {
+                                        $("#id_village").html(data); 
+                                    }
+                                });
+                            });
+                        </script>
+
+                </div>
+            </div>
+        </div> <!-- end content col -->
+    </div> <!-- end row -->
+</div> <!-- end container -->
+{% endblock %}

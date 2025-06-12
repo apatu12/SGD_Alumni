@@ -1,0 +1,185 @@
+{% extends "Main/Layout.html" %}
+{% load static %}
+{% block content %}
+<section>
+<div class="slider_img layout_two">
+        <div id="carousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel" data-slide-to="1"></li>
+                <li data-target="#carousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                    <img class="d-block" src="{% static 'theme/images/website.jpg'%}" alt="First slide">
+                    <div class="carousel-caption d-md-block">
+                        <div class="slider_title">
+                          <!--   <h1>Bepikir Kreaftif &amp; Inovatif</h1>
+                            <h4>Bagi kami kreativitas merupakan gerbang masa depan.<br> kreativitas akan mendorong inovasi. <br> Itulah yang kami lakukan.</h4> -->
+                            <div class="slider-btn">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block" src="{% static 'theme/images/images12.jpg'%}" alt="Second slide">
+                    <div class="carousel-caption d-md-block">
+                        <div class="slider_title">
+                            <h1>Profesór sira ne'ebé kualifikadu tebes</h1>
+                            <h4>Profesór sira maka fatór importante ida iha prosesu ensinu-aprendizajen Tanba ne'e maka ami lori profesór sira<br>di'ak liu hosi fatin hotu-hotu.</h4>
+                            <div class="slider-btn">
+                                <a href="guru" class="btn btn-default"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block" src="{% static 'theme/images/images44.jpg'%}" alt="Third slide">
+                    <div class="carousel-caption d-md-block">
+                        <div class="slider_title">
+                            <h1>Prosesu Aprendizajen Interativu</h1>
+                            <h4>Ita halo prosesu ensinu no aprendizajen sai interativu liután.<br> nune'e estudante sira gosta liu<br>prosesu aprendizajen.</h4>
+                            <div class="slider-btn">
+                                <a href="galeri" class="btn btn-default"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                <i class="icon-arrow-left fa-slider" aria-hidden="true"></i>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                <i class="icon-arrow-right fa-slider" aria-hidden="true"></i>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</section>
+<!--============================= ABOUT =============================-->
+<section class="clearfix about about-style2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+               <h2>BEMVINDO</h2>
+               <p>Ami simu ho laran-haksolok publikasaun website foun ALUMNI-UNTL nian, ho esperansa katak ho publikasaun website ida ne’e Universidade iha esperansa ba: Servisu edukasaun ne’ebé di’ak liután ba estudante sira, inan-aman no komunidade en-jerál.</p>
+
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'theme/images/vice.jpeg'%}" class="img-fluid about-img" alt="Vice Reitora	">
+            </div>
+        </div>
+    </div>
+</section>
+<!--//END ABOUT -->
+<!--============================= OUR COURSES =============================-->
+<section class="our_courses">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Informasaun Foun</h2>
+            </div>
+        </div>
+        <div class="row">
+                      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                <div class="courses_box mb-4">
+                    <div class="course-img-wrap">
+                        <img src="{% static 'assets/images/a0b99616241c9aded7f2a02661798d98.jpg'%}" class="img-fluid" alt="courses-img">
+                    </div>
+                    <!-- // end .course-img-wrap -->
+                    <a href="{% static 'artikel/iphone-8-baru-mengungkapkan-fitur-mengecewakan" class="course-box-content">
+                        <h3 style="text-align:center;">iPhone 8 foun hatudu karakterístika sira ne'ebé dezapontante</h3>
+                    </a>
+                </div>
+            </div>
+                      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                <div class="courses_box mb-4">
+                    <div class="course-img-wrap">
+                        <img src="{% static 'assets/images/ea114dc1ec5275560a5ef3238fd04722.jpg'%}" class="img-fluid" alt="courses-img">
+                    </div>
+                    <!-- // end .course-img-wrap -->
+                    <a href="{% static 'artikel/proses-belajar-mengajar-mschool" class="course-box-content">
+                        <h3 style="text-align:center;">Prosesu hanorin no aprendizajen Sia-UNTL</h3>
+                    </a>
+                </div>
+            </div>
+                      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                <div class="courses_box mb-4">
+                    <div class="course-img-wrap">
+                        <img src="{% static 'assets/images/12bfb1953df800c59835a2796f8c6619.jpg'%}" class="img-fluid" alt="courses-img">
+                    </div>
+                    <!-- // end .course-img-wrap -->
+                    <a href="{% static 'artikel/pelaksanaan-ujian-nasional-mschool" class="course-box-content">
+                        <h3 style="text-align:center;">Implementasaun ba Ezame Online Ba Docente nian</h3>
+                    </a>
+                </div>
+            </div>
+                      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                <div class="courses_box mb-4">
+                    <div class="course-img-wrap">
+                        <img src="{% static 'assets/images/a59aa487ab2e3b57b2fcf75063b67575.jpg'%}" class="img-fluid" alt="courses-img">
+                    </div>
+                    <!-- // end .course-img-wrap -->
+                    <a href="{% static 'artikel/prestasi-membangga-dari-siswa-mschool" class="course-box-content">
+                        <h3 style="text-align:center;">Prestasaun orgullozu sira husi estudante Untl sira</h3>
+                    </a>
+                </div>
+            </div>
+                  </div> <br>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <a href="{% static 'artikel" class="btn btn-default btn-courses">View More</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--//END OUR COURSES -->
+<!--//END EVENTS -->
+<!--============================= DETAILED CHART =============================-->
+<div class="detailed_chart">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3 chart_bottom">
+                <div class="chart-img">
+                    <img src="{% static 'theme/images/chart-icon_1.png'%}" class="img-fluid" alt="chart_icon">
+                </div>
+                <div class="chart-text">
+                    <p><span class="counter">{{total}}</span> Alumni
+                    </p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 chart_bottom chart_top">
+                <div class="chart-img">
+                    <img src="{% static 'theme/images/chart-icon_2.png'%}" class="img-fluid" alt="chart_icon">
+                </div>
+                <div class="chart-text">
+                    <p><span class="counter">{{totm}}</span> Mane
+                    </p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 chart_top">
+                <div class="chart-img">
+                    <img src="{% static 'theme/images/chart-icon_3.png'%}" class="img-fluid" alt="chart_icon">
+                </div>
+                <div class="chart-text">
+                    <p><span class="counter">{{totf}}</span> Feto
+                    </p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="chart-img">
+                    <img src="{% static 'theme/images/chart-icon_4.png'%}" class="img-fluid" alt="chart_icon">
+                </div>
+                <div class="chart-text">
+                    <p><span class="counter">3</span> Prestasaun</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--//END DETAILED CHART -->
+
+</div>
+{% endblock %}

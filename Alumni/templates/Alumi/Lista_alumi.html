@@ -1,0 +1,112 @@
+{% extends 'Main/Admin/layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container mt-5">
+    <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{legend|upper}}</li>
+  </ol>
+</nav>
+    <div class="row">
+        <!-- Table Content -->
+        <div class="col-12 col-md-6 col-lg-12">
+            <div class="card rounded">
+                <div class="card-header" style="background: #41d5f0;">
+                    <h6 class="font-weight-bold text-white"><i class="fa fa-list"></i> {{legend|upper}}</h6>
+                </div>
+                <div class="card-body">
+                    {% if messages %}
+                        {% for message in messages  %}
+                            <div class="alert alert-{{message.tags}}">{{message}}</div>
+                        {% endfor %}
+                    {% endif %}
+                    {% if group == 'Admin' %}
+                        
+                    <a href="{% url 'a-alm' %}" class="btn btn-outline-primary btn-sm mb-4"><i class="fa fa-user-plus"></i> Adisiona Alumni</a>
+                    <a href="{% url 'excel-import' %}" class="btn btn-outline-success btn-sm mb-4"><i class="fa fa-download"></i> Importa Ficheiro</a>
+                    <a href="{% url 'e-csv' %}" class="btn btn-outline-danger btn-sm mb-4"><i class="fa fa-upload"></i> Exporta Ficheiro</a>
+                    <br>
+                    <br>
+                    {% endif %}
+                    <div class="table-responsive">
+                        <table id="example1" class="table table-bordered table-sm">
+                            <thead class="text-center">
+                                <tr>
+                                    <th>Nu</th>
+                                    <th>Nu Rejistu</th>
+                                    <th>Naran</th>
+                                    <th>Sexu</th>
+                                    <th>Data Moris</th>
+                                    <th>Departamento</th>
+                                    <th>Munisipiu</th>
+                                    <th>Opsaun</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for alumni in objects %}
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                    <td>{{ alumni.nre }}</td>
+                                    <td>{{ alumni.name }}</td>
+                                    <td>{{ alumni.sex }}</td>
+                                    <td>{{ alumni.dob|date:"d/m/Y" }}</td>
+                                    <td>{{ alumni.departamento.code }}</td>
+                                    <td>{{ alumni.mun }}</td>
+                                    <td class="text-center">
+                                        {% if group == 'Admin' or group == 'Staff'%}
+                                            <a href="{% url 'Hadia-Alumi' alumni.pk %}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hamos-{{alumni.id}}"><i class="fa fa-trash"></i>
+                                        </button>
+                                        <a href="{% url 'Det_ALm'  alumni.id %}" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
+                                        {% else %}
+                                        <a href="{% url 'Det_ALm'  alumni.id %}" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <div class="modal fade" id="hamos-{{alumni.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel" class="btn btn-primary mb-primari">Ita Hakarak Hamos Dadus Ne'e</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        Ita hakarak hamos dadus ho naran {{alumni.name}}
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-window-close"></i> Close</button>
+                                        <a href="{% url 'sof-delete' alumni.id %}" class="btn btn-success"><i class="fa fa-trash"></i> Hamos</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <nav aria-label="breadcrumb">
+                      <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'ALm' %}">Jeral</a></li>
+                        {% if page == 'mun_almt' or page == 'mun_almf' or page == 'mun_amlm' %}
+                            {% for obj in ano %}
+                            <li class="breadcrumb-item"><a href="{% url 'all-tinan-mun' obj.pk %}">{{obj.name}}</a></li>
+                        {% endfor %}
+                        {% else %}
+                        {% for obj in ano %}
+                            <li class="breadcrumb-item"><a href="{% url 'Lista-Ano-mun' obj.pk %}">{{obj.name}}</a></li>
+                        {% endfor %}
+                        {% endif %}
+                      </ol>
+                    </nav>
+                </div>
+            </div>
+        </div> <!-- end content col -->
+    </div> <!-- end row -->
+</div> <!-- end container -->
+{% endblock %}

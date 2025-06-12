@@ -1,0 +1,26 @@
+{% extends "Main/Layout.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ legend|upper }}</li>
+        </ol>
+    </nav>
+</div>
+<div class="container">
+    <div class="col-sm-12 mb-5">
+        <div class="card shadow-sm rounded border-primary">
+          <diw class="row">
+              <div class="col-sm-4">
+                  <img src="{% static 'image/UNTL.png' %}" class="img-fluid">
+              </div>
+              <div class="col-sm-8">
+                  <h1 align="center">PERFILE UNTL</h1>
+              </div>
+          </diw>
+        </div>
+    </div>
+</div>
+{% endblock %}

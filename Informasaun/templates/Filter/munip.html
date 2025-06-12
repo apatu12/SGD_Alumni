@@ -1,0 +1,52 @@
+{% extends "Main/Layout.html" %}
+
+{% block content %}
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ legend|upper }}</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="container">
+    <!-- Alumni per Year -->
+    <div class="col-sm-12 mb-5">
+        <div class="card shadow-sm rounded border-primary">
+            <div class="card-header">
+                <h6 class="card-title py-3 ml-2 mb-2 text-uppercase">
+                    <i class="fa fa-graduation-cap"></i> Dadus Total Alumni Tuir Faculdade {{fac.name}} No Postu Husi Munisipiu {{mun.name}}
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                   <table class="table table-bordered table-sm">
+                    <thead>
+                        <tr class="text-center">
+                            <th rowspan="2">{{ mun.name }}</th>
+                            <th colspan="2" class="text-center">Alumni</th>
+                            <th rowspan="2">Total</th>
+                        </tr>
+                        <tr class="text-center">
+                            <th>Mane</th>
+                            <th>Feto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for obj in looping1 %}
+                        <tr>
+                            <td >{{ obj.0.name }}</td>
+                            <td class="text-center"><a href="" class="text-primary">{{ obj.1 }}</a></td>
+                            <td class="text-center"><a href="#" class="text-primary">{{ obj.2 }}</a></td>
+                            <td class="text-center"><a href="" class="text-primary">{{ obj.3 }}</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,164 @@
+{% extends "Main/Layout.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{ legend|upper }}</li>
+    </ol>
+  </nav>
+</div>
+
+<div class="container">
+  <div class="card shadow-sm rounded border-primary">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card shadow-sm rounded m-2 mb-4 mt-2">
+          <div class="card-header">
+            <h6 class="card-title mb-2">
+              <i class="fa fa-list"></i> {{ legend|upper }}
+            </h6>
+          </div>
+          <div class="card-body">
+            <div class="row mt-2">
+              <div class="col-md-3 mb-4">
+                {% if objects.foto %}
+                <img src="{{ objects.foto.url }}" class="img-fluid rounded-pill ml-2" alt="Foto" width="100%" height="170">
+                {% else %}
+                  <img src="{% static 'image/UNTL1.png' %}" class="card-img-top" alt="..." width="100%" height="170px">  
+                {% endif %}
+                
+              </div>
+              <div class="col-md-9 mb-4">
+               <div class="row">
+               	<div class="col-md-6">
+               		 <table class="table table-borderles table-sm" width="100%">
+                  <tr>
+                    <th>Naran Rejistu</th>
+                    <td>:</td>
+                    <td>{{ objects.nre }}</td>
+                  </tr>
+                  <tr>
+                    <th>Naran Kompletu</th>
+                    <td>:</td>
+                    <td>{{ objects.name }}</td>
+                  </tr>
+                  <tr>
+                    <th>Sexo</th>
+                    <td>:</td>
+                    <td>{{ objects.sex }}</td>
+                  </tr>
+                  <tr>
+                    <th>Fatin no Data Moris</th>
+                    <td>:</td>
+                    <td>{{ objects.pob }}/{{ objects.dob|date:"d-m-Y" }}</td>
+                  </tr>
+                  <tr>
+                    <th>Faculdade</th>
+                    <td>:</td>
+                    <td>{{ objects.faculdade }}</td>
+                  </tr>
+                  <tr>
+                    <th>Departemento</th>
+                    <td>:</td>
+                    <td>{{ objects.departamento }}</td>
+                  </tr>
+                   <tr>
+                    <th>Municipio</th>
+                    <td>:</td>
+                    <td>{{ objects.mun }}</td>
+                  </tr>
+                   <tr>
+                    <th>Posto Administrativo</th>
+                    <td>:</td>
+                    <td>{{ objects.post }}</td>
+                  </tr>
+                   <tr>
+                    <th>Suco</th>
+                    <td>:</td>
+                    <td>{{ objects.suk }}</td>
+                  </tr>
+                   <tr>
+                    <th>Aldeia</th>
+                    <td>:</td>
+                    <td>{{ objects.ald }}</td>
+                  </tr>
+                  <tr>
+                    <th>Nu Telfone</th>
+                    <td>:</td>
+                    <td>{{ objects.name }}</td>
+                  </tr>
+                </table>
+               	</div>
+               <div class="col-md-6">
+               	<table class="table table-borderles table-sm" width="100%">
+                   <tr>
+                    <th>Tinan Tama Eskola</th>
+                    <td>:</td>
+                    <td>{{ objects.start_date }}</td>
+                  </tr>
+                   <tr>
+                    <th>Tinan Remata</th>
+                    <td>:</td>
+                    <td>{{ objects.start_date }}</td>
+                  </tr>
+                   <tr>
+                    <th>Orientador I</th>
+                    <td>:</td>
+                    <td>{{ objects.orientador }}</td>
+                  </tr>
+                   <tr>
+                    <th>Orintador II</th>
+                    <td>:</td>
+                    <td>{{ objects.orientador }}</td>
+                  </tr>
+                   <tr>
+                    <th>Titulu Teze</th>
+                    <td>:</td>
+                    <td>{{ objects.title }}</td>
+                  </tr>
+                   <tr>
+                    <th>Valor Teze</th>
+                    <td>:</td>
+                    <td>{{ objects.point }}</td>
+                  </tr>
+                   <tr>
+                    <th>Predikadu Final</th>
+                    <td>:</td>
+                    <td>{{ objects.predict }}</td>
+                  </tr>
+                   <tr>
+                    <th>Email</th>
+                    <td>:</td>
+                    <td>{{ objects.email }}</td>
+                  </tr>
+                   <tr>
+                    <th>Profisaun</th>
+                    <td>:</td>
+                    <td>{{ objects.name }}</td>
+                  </tr>
+                   <tr>
+                    <th>Pais</th>
+                    <td>:</td>
+                    <td>{{ objects.name }}</td>
+                  </tr>
+                   <tr>
+                    <th>Pais Hela Fatin</th>
+                    <td>:</td>
+                    <td>{{ objects.name }}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br><br>
+</div>
+{% endblock %}

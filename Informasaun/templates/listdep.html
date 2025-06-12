@@ -1,0 +1,75 @@
+{% extends "Main/Layout.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+	<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{legend|upper}}</li>
+  </ol>
+</nav>
+</div>
+<div class="container">
+	<div class="card shadow-sm rounded border-primary">		
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card shadow-sm rounded ml-2 mr-2 mb-4 mt-2">
+					<div class="card-header">
+						<h6 class="card-title mb-2"><i class="fa fa-bar-chart"></i> Dadus Total Estudante Departamento {{objects.name}} Total {{objects1|length}}</h6>
+					</div>
+				<div class="panel-body">
+							<div class="row">
+							    {% for obj in objects1 %}
+							    
+							    	<div class="col-md-3 mb-4 mt-2">
+							    		<div class="card">
+							    	{% if obj.foto %}
+									  <img src="{{obj.foto.url}}" class="card-img-top" alt="..." width="100%" height="170px">
+									  {% else %}
+									<a href="{% url 'a-det' obj.pk %}"><img src="{% static 'image/UNTL1.png' %}" class="card-img-top" alt="..." width="100%" height="170px"></a>
+									 {% endif %}
+									  <div class="card-body">
+									    <h5 class="card-title ml-2">{{ obj.name }}<br>{{obj.departamento}} <br>-<span class="badge badge-danger rounded-pill px-3"> {{obj.nre}}</span></h5>
+									    <a href="{% url 'a-det' obj.pk %}" class="btn btn-primary ml-5 mb-3">Detaillu</a>
+									  </div>
+									</div>
+							    	</div>
+							    
+							    {% endfor %}
+							    </div>							  
+						</div>
+					</div>
+						<div class="card-footer">
+								<nav aria-label="breadcrumb">
+								  <ol class="breadcrumb">
+								  	{% for obj in page_obj %}
+								    <li class="breadcrumb-item"><a href="{% url 'l-year' obj.pk %}" class="text-primary">{{obj.name}}</a></li>
+								     {% endfor %}
+								  </ol>
+								 
+								</nav>
+						<div class="pagination">
+				        <span class="step-links">
+				            {% if page_obj.has_previous %}
+				                <a href="?page=1">&laquo; Hahu</a>
+				                <a href="?page={{ page_obj.previous_page_number }}">Dadauk</a>
+				            {% endif %}
+
+				            <span class="current">
+				                Pajina {{ page_obj.number }} Husi {{ page_obj.paginator.num_pages }}.
+				            </span>
+
+				            {% if page_obj.has_next %}
+				                <a href="?page={{ page_obj.next_page_number }}">Kontinua</a>
+				                <a href="?page={{ page_obj.paginator.num_pages }}">Ikus &raquo;</a>
+				            {% endif %}
+				        </span>
+				    </div>		
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br><br><br>
+</div>
+{% endblock %}
