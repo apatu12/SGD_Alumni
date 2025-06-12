@@ -6,6 +6,7 @@ __pycache__/
 # SQLite3 database file
 *.sqlite3
 
+
 # PostgreSQL database (jika ada backup)
 *.dump
 *.sql
@@ -60,3 +61,7 @@ highcharts_offline/
 *.bak
 *.tmp
 *.temp
+
+
+# SSL certificate
+ca.pem
