@@ -12,18 +12,10 @@ __pycache__/
 *.sql
 
 # Django media uploads
-/media/
-*.webm
-*.mp4
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.svg
+
 
 # Django static files (collectstatic)
-staticfiles/
-static/
+
 
 # Environment variables
 .env
